@@ -1,7 +1,32 @@
-doctype
-html
-  head
-    meta(charset="utf-8")
-    title #{title}
-  body
-    h1 #{title}
+extends ../layout
+
+block content
+  .container
+    .row
+      table.table.table-hover.table-bordered
+        thead
+          tr
+            th Movie name
+            th Director name
+            th Nation
+            th Language
+            th Year
+            //-th Create at
+            th Check info
+            th Update
+            th Delete
+          tbody
+            each movie in movies
+              tr(class="item-id-#{movie.id}")
+                td #{movie.title}
+                td #{movie.director}
+                td #{movie.nation}
+                td #{movie.language}
+                td #{movie.year}
+                //-td #{moment(movie.meta.createdAt).format('MM/DD/YYYY')}
+                td #{movie.meta.createdAt}
+                td #{movie.meta.createdAt}
+                td: a(target="_blank" href="../movie/#{movie._id}") Check info
+                td: a(target="_blank" href="../admin/update/#{movie._id}") Update
+                td
+                  button.btn.btn-danger.del(type="button", data-id="#{movie._id}") Delete

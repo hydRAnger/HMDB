@@ -1,7 +1,35 @@
-doctype
-html
-  head
-    meta(charset="utf-8")
-    title #{title}
-  body
-    h1 #{title}
+extends ../layout
+
+block content
+  .container
+    .row
+      form.form-horizontal(method="post", action="/admin/movie/new")
+        .form-group
+          label.col-sm-3.control-label(for="inputTitle") Movie name
+          .col-sm-10
+            input#inputTitle.form-control(type="text", name="movie[title]")
+
+        .form-group
+          label.col-sm-3.control-label(for="inputDirector") Director name
+          .col-sm-10
+            input#inputDirector.form-control(type="text", name="movie[director]")
+
+        .form-group
+          label.col-sm-3.control-label(for="inputNation") Nation
+          .col-sm-10
+            input#inputNation.form-control(type="text", name="movie[nation]")
+
+        .form-group
+          label.col-sm-3.control-label(for="inputLanguage") Language
+          .col-sm-10
+            input#inputLanguage.form-control(type="text", name="movie[language]")
+
+        .form-group
+          label.col-sm-3.control-label(for="inputYear") Year
+          .col-sm-10
+            input#inputYear.form-control(type="text", name="movie[year]")
+
+        .form-group
+          label.col-sm-3.control-label(for="inputSummary") Summary
+          .col-sm-10
+            input#inputSummary.form-control(type="text", name="movie[summary]")
