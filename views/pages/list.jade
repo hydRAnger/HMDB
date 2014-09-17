@@ -24,8 +24,6 @@ block content
                 td #{movie.language}
                 td #{movie.year}
                 //-td #{moment(movie.meta.createdAt).format('MM/DD/YYYY')}
-                td #{movie.meta.createdAt}
-                td #{movie.meta.createdAt}
                 td: a(target="_blank" href="../movie/#{movie._id}") Check info
                 td: a(target="_blank" href="../admin/update/#{movie._id}") Update
                 td

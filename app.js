@@ -69,7 +69,20 @@ app.get('/admin/movie', function(req, res){
 //list page
 app.get('/admin/list', function(req, res){
   res.render('list', {
-    title : 'HMDB list page'
+    title : 'HMDB list page',
+    movies : [
+      {
+        title : 'Bat Man',
+        _id : 1,
+        director : "Norlan",
+        nation : "US",
+        title : "Bat Man",
+        year : 2008,
+        language : "English",
+        flash : "http://v.youku.com/v_show/id_XMzE2ODM0Njk2.html"
+      }
+    ]
+
   })
 })
 
