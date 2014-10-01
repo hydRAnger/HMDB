@@ -68,20 +68,6 @@ app.get('/admin/movie', function(req, res){
   })
 })
 
-// admin update movie
-app.get('/admin/update/:id', function(req, res){
-  var id = req.params.id
-
-  if (id) {
-    Movie.findById(id, function(err, movie) {
-      res.render('admin', {
-        title : "Update movie",
-        movie : movie
-      })
-    })
-  }
-})
-
 //admin post movie
 app.post('/admin/movie/new', function(req, res) {
   var id = req.body.movie._id
@@ -123,6 +109,22 @@ app.post('/admin/movie/new', function(req, res) {
     })
   }
 })
+
+
+// admin update movie
+app.get('/admin/update/:id', function(req, res){
+  var id = req.params.id
+
+  if (id) {
+    Movie.findById(id, function(err, movie) {
+      res.render('admin', {
+        title : "Update movie",
+        movie : movie
+      })
+    })
+  }
+})
+
 
 //list page
 app.get('/admin/list', function(req, res){
