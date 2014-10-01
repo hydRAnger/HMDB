@@ -1,13 +1,19 @@
 var express = require('express')
 var path = require('path')
 var mongoose = require('mongoose')
+
 var _ = require('underscore')
-var Movie = require('./models/movie.js')
+var Movie = require('./models/movie')
 var port = process.env.PORT || 3000
 var app = express()
 var bodyParser = require('body-parser')
 
 mongoose.connect('mongodb://localhost/HMDB')
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback () {
+   console.log("connected to db!")
+});
 
 app.set('views', './views/pages')
 app.set('view engine', 'jade')//default template engine
@@ -19,16 +25,18 @@ console.log('HMDB start on port:' + port)
 
 //index page
 app.get('/', function(req, res){
-  Movie.fetch(function(err, movies) {
-    if (err) {
-      console.log(err)
-    }
+  console.log("fetch!")
+  console.log(Movie)
+  //Movie.fetch(function(err, movies) {
+  //  if (err) {
+  //    console.log(err)
+  //  }
 
-    res.render('index', {
-      title : 'HMDB homepage',
-      movies : movies
-    })
-  })
+  //  res.render('index', {
+  //    title : 'HMDB homepage',
+  //    movies : movies
+  //  })
+  //})
 })
 
 //detail page
@@ -118,6 +126,7 @@ app.post('/admin/movie/new', function(req, res) {
 
 //list page
 app.get('/admin/list', function(req, res){
+  console.log("fetch!")
   Movie.fetch(function(err, movies) {
     if (err) {
       console.log(err)
